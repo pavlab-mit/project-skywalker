@@ -63,11 +63,11 @@ handles mobility and scaling more gracefully.
 
 ------------------------------------------------------------------------
 
-## 🔹 Practical Swarm Pattern
+## 🔹 Practical Swarm Pattern (single aircraft setup)
 
--   **Primary plane (Wi-Fi mesh, Rocket M5 + OLSR/BATMAN-adv):**
+-   **Primary radio (Wi-Fi mesh, Rocket M5 + OLSR/BATMAN-adv):**
     High-bandwidth, short/medium-range, handles video + data sync.\
--   **Backup plane (RFD900x + PPP + BATMAN classic):** Long-range,
+-   **Backup radio (RFD900x + PPP + BATMAN classic):** Long-range,
     resilient, low-rate control/telemetry link if Wi-Fi drops.
 
 This **hybrid model** gives you both throughput and resilience.
