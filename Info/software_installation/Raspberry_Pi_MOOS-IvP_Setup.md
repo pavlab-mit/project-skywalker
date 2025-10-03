@@ -111,6 +111,7 @@ git config --global user.email "you@example.com"
 ```
 
 ### 9.2 Install uav-common
+Note: For now, contact chbenj36@gmail.com to request access
 ```bash
 cd ~
 git clone https://github.com/cbenjamin23/uav-common.git
@@ -140,6 +141,7 @@ cd ~/moos-ivp-swarm
 ```
 
 ### 9.5 Install moos-ivp-uav-base (+ MAVSDK)
+Note: For now, contact chbenj36@gmail.com to request access
 ```bash
 cd ~
 git clone git@github.com:cbenjamin23/moos-ivp-uav-base.git
