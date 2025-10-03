@@ -2,6 +2,7 @@
 
 **Note:** Please change hostname and filenames to match your project
 
+
 ## 0) Prereqs on your Mac
 Install Raspberry Pi Imager (from raspberrypi.com).
 
@@ -14,6 +15,7 @@ Install ssh-copy-id via Homebrew:
 ```bash
 brew install ssh-copy-id
 ```
+
 
 ## 1) Flash the SD card with Raspberry Pi Imager
 1. Insert the SD card → open Raspberry Pi Imager.
@@ -29,6 +31,7 @@ brew install ssh-copy-id
    - Locale: timezone + keyboard (`us`)
 5. Save → Write the image. Eject card.
 
+
 ## 2) First boot & test SSH
 Insert SD into the Pi, power it, wait ~1–2 minutes.  
 From your Mac:
@@ -36,6 +39,7 @@ From your Mac:
 ssh uav@skywalker1.local
 ```
 Enter password from step 1.
+
 
 ## 3) Generate an SSH key on your Mac
 Create a dedicated key so you don’t overwrite existing ones:
@@ -46,10 +50,12 @@ Passphrase (optional). Files created:
 - Private key: `~/.ssh/id_ed25519_skywalker1`
 - Public key: `~/.ssh/id_ed25519_skywalker1.pub`
 
+
 ## 4) Copy your public key to the Pi
 ```bash
 ssh-copy-id -i ~/.ssh/id_ed25519_skywalker1.pub uav@skywalker1.local
 ```
+
 
 ## 5) Make SSH seamless
 Edit `~/.ssh/config`:
@@ -67,6 +73,7 @@ Then run:
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519_skywalker1
 ```
 
+
 ## 6) Test passwordless login
 ```bash
 ssh skywalker1
@@ -78,6 +85,7 @@ chmod 600 ~/.ssh/authorized_keys
 chown -R uav:uav ~/.ssh
 ```
 
+
 ## 7) Update and upgrade packages
 ```bash
 sudo apt-get update
@@ -85,10 +93,12 @@ sudo apt-get upgrade -y
 sudo systemctl disable --now packagekit   # optional
 ```
 
+
 ## 8) Install useful packages
 ```bash
 sudo apt-get --assume-yes install emacs wget members cmake subversion screen ncdu watch git
 ```
+
 
 ## 9) Install & build core repos
 ### 9.1 System prep
@@ -138,7 +148,7 @@ git submodule update --init --recursive
 chmod +x ~/moos-ivp-uav/scripts/setup_bash_aliases_moos.sh
 ```
 
-#### 9.5.1 Build MAVSDK
+### 9.5.1 Build MAVSDK
 ```bash
 cd ~/moos-ivp-uav/MAVSDK
 cmake -S . -B build/default -G Ninja   -DSUPERBUILD=ON   -DCMAKE_BUILD_TYPE=Debug   -DBUILD_SHARED_LIBS=ON   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
