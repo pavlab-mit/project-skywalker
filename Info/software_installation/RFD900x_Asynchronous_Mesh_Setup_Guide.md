@@ -49,7 +49,8 @@ Unfortunately, the provided FTDI cable and documentation are not sufficient for 
 
 ## 2. Configuring Radio Registers
 
-At this point, you can configure the radio registers either on **Windows** using the **RFD Modem Tools** interface or directly on **macOS/Linux** using a serial terminal.  
+At this point, you can configure the radio registers either on **Windows** using the **RFD Modem Tools** interface or directly on **macOS/Linux** using a serial terminal. If you work with a mac normally, skip to the **macOS/picocom** section to get used to editing registers with your mac.
+
 The parameters and AT command syntax are described in the official **RFD900x Asynchronous User Manual (V1.1)**:  
 [https://rfdesign.com.au/wp-content/uploads/2024/04/RFD900x-Asynchronous-User-Manual-V1.1.pdf](https://rfdesign.com.au/wp-content/uploads/2024/04/RFD900x-Asynchronous-User-Manual-V1.1.pdf)
 
@@ -63,35 +64,28 @@ This displays all register values including baud rate, node ID, destination ID, 
 
 ---
 
-### Recommended Configuration (Windows – RFD Modem Tools)
+### Windows – RFD Modem Tools
 
 In the **Terminal** tab of RFD Modem Tools, enter the following commands:
-
-```
-+++
-ATS10=1         (Node ID)
-ATS11=65535     (Destination ID)
-ATS12=30        (Transmit power in dBm)
-ATS2=2          (Antenna mode: auto-diversity)
-AT&W            (Save to EEPROM)
-ATZ             (Reboot)
-```
-
-If you have multiple radios, assign a unique Node ID (ATS10) to each one. All radios should share the same Destination ID (65535) to enable broadcast mesh communication.
 
 To view all current settings at any time:
 ```
 ATI5
 ```
 
-To reset to factory defaults:
 ```
-AT&F
-AT&W
-ATZ
++++
+ATS10=1         (Node ID)
+ATS11=65535     (Destination ID)
+ATS12=30        (Transmit power in dBm)
+ATS22=2         (Antenna mode: auto-diversity)
+AT&W            (Save to EEPROM)
+ATZ             (Reboot)
 ```
 
----
+Reconnect and type ```ATI5``` again to verify that the values match the desired configuration.
+
+If you have multiple radios, assign a unique Node ID (ATS10) to each one. All radios should share the same Destination ID (65535) to enable broadcast mesh communication.
 
 ### Configuring on macOS or Linux with picocom
 
@@ -128,17 +122,23 @@ ATZ
    ATS10=1
    ATS11=65535
    ATS12=30
-   ATS2=2
+   ATS22=2
    AT&W
    ATZ
    ```
 
-6. **Confirm the configuration**
-   Reconnect if needed and type:
+6. **Disconnect from picocom**
+   Type the following to exit picocom:
+   ```
+   Ctrl-A  Ctrl-X
+   ```
+
+8. **Confirm the configuration**
+   Reconnect and type:
    ```
    ATI5
    ```
-   Verify that the values match the desired configuration.
+   to verify that the values match the desired configuration.
 
 ---
 
