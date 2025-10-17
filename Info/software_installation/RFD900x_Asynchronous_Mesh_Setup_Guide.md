@@ -78,7 +78,7 @@ ATI5
 ATS10=1         (Node ID)
 ATS11=65535     (Destination ID)
 ATS12=30        (Transmit power in dBm)
-ATS22=2         (Antenna mode: auto-diversity)
+ATS23=2         (Antenna mode: auto-diversity)
 AT&W            (Save to EEPROM)
 ATZ             (Reboot)
 ```
@@ -122,7 +122,7 @@ If you have multiple radios, assign a unique Node ID (ATS10) to each one. All ra
    ATS10=1
    ATS11=65535
    ATS12=30
-   ATS22=2
+   ATS23=2
    AT&W
    ATZ
    ```
