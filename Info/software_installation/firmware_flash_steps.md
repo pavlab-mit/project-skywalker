@@ -1,4 +1,4 @@
-# Correct Steps for Flashing ArduPlane Firmware onto CubeOrange / CubeOrange+
+# Steps for Flashing Custom ArduPlane Firmware onto CubeOrange+
 
 ## 1. Disconnect Your Cube from USB
 Ensure the Cube is not powered before starting the flashing process.
