@@ -1,0 +1,93 @@
+name: Documentation Check
+
+on:
+  push:
+    paths:
+      - 'docs/**'
+      - 'README.md'
+      - '.github/workflows/docs-check.yml'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'README.md'
+
+jobs:
+  markdown-lint:
+    name: Check Markdown Links
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Check for broken links in documentation
+      run: |
+        echo "Checking for broken internal links in documentation..."
+        
+        # Function to check if a file exists
+        check_file() {
+          local file="$1"
+          if [ ! -f "$file" ]; then
+            echo "❌ Missing file: $file"
+            return 1
+          else
+            echo "✓ Found: $file"
+            return 0
+          fi
+        }
+        
+        # Check that all main documentation files exist
+        EXIT_CODE=0
+        
+        echo "=== Checking main documentation files ==="
+        for file in docs/index.md docs/installation.md docs/quickstart.md docs/usage.md \
+                    docs/architecture.md docs/hardware.md docs/radio-setup.md docs/firmware.md \
+                    docs/development.md docs/contributing.md docs/troubleshooting.md \
+                    docs/authors.md docs/changelog.md; do
+          if ! check_file "$file"; then
+            EXIT_CODE=1
+          fi
+        done
+        
+        echo ""
+        echo "=== Checking README.md links ==="
+        # Extract markdown links from README and verify they exist
+        grep -oP '\[.*?\]\(docs/\K[^)]+' README.md 2>/dev/null | while read -r link; do
+          file="docs/$link"
+          if ! check_file "$file"; then
+            EXIT_CODE=1
+          fi
+        done
+        
+        if [ $EXIT_CODE -eq 0 ]; then
+          echo ""
+          echo "✅ All documentation files present and linked correctly!"
+        else
+          echo ""
+          echo "❌ Some documentation files are missing or links are broken."
+          exit 1
+        fi
+    
+    - name: Validate Markdown syntax
+      run: |
+        echo "Validating markdown files..."
+        # Simple check for common markdown issues
+        find docs -name "*.md" -type f | while read -r file; do
+          echo "Checking $file..."
+          # Check for unclosed code blocks
+          if [ $(grep -c '```' "$file") -ne 0 ]; then
+            if [ $(($(grep -c '```' "$file") % 2)) -ne 0 ]; then
+              echo "❌ Unclosed code block in $file"
+              exit 1
+            fi
+          fi
+        done
+        echo "✅ Markdown syntax looks good!"
+    
+    - name: Summary
+      run: |
+        echo "Documentation check complete!"
+        echo ""
+        echo "Files checked:"
+        find docs -name "*.md" -type f | wc -l
+        echo "documentation files found"
