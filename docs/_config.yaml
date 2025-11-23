@@ -1,3 +1,53 @@
 title: Project Skywalker
-description: MOOS-IvP on Skywalker X8
+description: Comprehensive documentation for autonomous UAV operations using MOOS-IvP on the Skywalker X8 platform
 theme: minima
+
+# GitHub metadata
+github:
+  repository_url: https://github.com/pavlab-mit/project-skywalker
+  repository_name: pavlab-mit/project-skywalker
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Navigation
+header_pages:
+  - index.md
+  - installation.md
+  - quickstart.md
+  - usage.md
+  - architecture.md
+  - hardware.md
+  - radio-setup.md
+  - firmware.md
+  - development.md
+  - contributing.md
+  - troubleshooting.md
+  - authors.md
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO
+author: PAVLab MIT
+twitter:
+  username: pavlab_mit
+  card: summary
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
