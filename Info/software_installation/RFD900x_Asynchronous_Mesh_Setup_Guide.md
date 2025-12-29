@@ -88,7 +88,6 @@ Reconnect and type ```ATI5``` again to verify that the values match the desired 
 If you have multiple radios, assign a unique Node ID (ATS10) to each one. All radios should share the same Destination ID (65535) to enable broadcast mesh communication.
 
 ### Configuring on macOS or Linux with picocom
-Note: This has been a bit iffy so far. Please consider finding a friend with a windows computer if you find yourself stuck at the "+++" step.
 
 1. **Install picocom**
    ```
@@ -104,7 +103,7 @@ Note: This has been a bit iffy so far. Please consider finding a friend with a w
 
 3. **Open the serial connection**
    ```
-   picocom -b 57600 /dev/tty.usbserial-BG00FTB3
+   picocom -b 115200 /dev/tty.usbserial-BG00FTB3
    ```
    You should see:
    ```
