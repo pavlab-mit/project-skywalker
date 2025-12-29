@@ -52,6 +52,14 @@ Result: radios behave like a **point-to-point Ethernet cable**.
 Before configuring PPP, confirm that the radios pass raw bytes.
 
 ### On the Pi
+
+Check which port the radio is plugged into
+```bash
+ls -l /dev/ttyUSB*
+```
+
+We will assume ttyUSB0 for the remainder of this tutorial
+
 ```bash
 screen /dev/ttyUSB0 115200
 ```
