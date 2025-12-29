@@ -1,6 +1,7 @@
 # RFD900x → PPP → Headless IP Network (Mac ↔ Raspberry Pi)
 
 ## Objective
+
 Create a **persistent, headless IP network** over **RFD900x telemetry radios** so that MOOS-IvP missions can run over standard IP networking **without Wi-Fi, Ethernet, MAVLink, or SSH access at boot**.
 Note: This is a solution for single vehicale <-> ground station communication. If your goal is scalable multi-vehicle missions, using the RFD900x serial radio can serve an intermediate testing step before you get or mesh radios (layer 3) for your fleet.
 ---
