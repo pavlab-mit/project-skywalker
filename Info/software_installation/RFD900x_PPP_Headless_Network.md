@@ -252,6 +252,7 @@ Optional:
 ```bash
 ssh uav@10.0.0.2
 ```
+Note: your vehicle will probably have a username other than uav
 
 ---
 
