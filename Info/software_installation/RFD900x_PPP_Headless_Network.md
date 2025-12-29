@@ -191,7 +191,7 @@ PPP requires exclusive access to the serial device.
 screen -ls
 ```
 
-If any sessions exist:
+If any sessions exist from before:
 ```bash
 screen -S <id> -X quit
 ```
