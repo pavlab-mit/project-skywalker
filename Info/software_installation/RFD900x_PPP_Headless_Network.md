@@ -148,6 +148,15 @@ Save and exit.
 
 ### Mac configuration
 
+Check which port the radio is plugged into
+```bash
+ls /dev/tty.*
+```
+Typical RFD900x results:
+```bash
+/dev/tty.usbserial-BG00ETCL
+```
+
 Create directory if missing:
 ```bash
 sudo mkdir -p /etc/ppp/peers
