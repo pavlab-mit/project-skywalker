@@ -259,7 +259,7 @@ Note: your vehicle will probably have a username other than uav
 ## Step 7 — Make PPP Persistent on the Pi (Field Mode)
 
 ### Create a systemd service
-
+This ensures the pi launches pppd on boot so you can field test without an existing network
 ```bash
 sudo nano /etc/systemd/system/ppp-rfd.service
 ```
