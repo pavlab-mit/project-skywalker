@@ -107,6 +107,35 @@ maxfail 0
 
 Save and exit.
 
+### PPP Options Explained
+
+- `/dev/ttyUSB0 115200`  
+  Serial device and baud rate used for the PPP link (RFD900x USB interface at 115200 baud).
+
+- `noauth`  
+  Disable authentication (PAP/CHAP). Required for direct point-to-point links where no login exchange exists.
+
+- `local`  
+  Ignore modem control lines (DCD, DTR, etc.). Necessary because the RFD900x is not a real modem.
+
+- `nodetach`  
+  Keep `pppd` running in the foreground. Useful for debugging and for systemd-managed services.
+
+- `passive`  
+  Do not immediately fail if no PPP frames are received; wait for the peer to respond. Important for radios that come up slowly or after boot.
+
+- `persist`  
+  Automatically reconnect if the link drops. Required for a resilient, always-on telemetry IP link.
+
+- `maxfail 0`  
+  Retry indefinitely instead of exiting after a fixed number of failures.
+
+- `10.0.0.2:10.0.0.1`  
+  Assign static IPs to the PPP interface  
+  - Local IP: `10.0.0.2`  
+  - Remote (peer) IP: `10.0.0.1`  
+  This creates a deterministic point-to-point IP link over the serial radio.
+
 ---
 
 ### Mac configuration
