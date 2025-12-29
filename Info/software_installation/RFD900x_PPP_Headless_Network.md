@@ -4,7 +4,7 @@
 
 Create a **persistent, headless IP network** over **RFD900x telemetry radios** so that MOOS-IvP missions can run over standard IP networking **without Wi-Fi, Ethernet, MAVLink, or SSH access at boot**.
 
-Note: This is a solution for single-vehicle ↔ ground-station communication. If your goal is scalable multi-vehicle missions, using the RFD900x serial radio can serve as an intermediate testing step before moving to Layer-3 mesh radios.
+Note: This is a solution for single-vehicle ↔ ground-station communication. If your goal is scalable multi-vehicle missions, using the RFD900x serial radio can serve as an intermediate testing step before moving to network radios (layer 3) like mesh or wifi radios.
 
 ---
 
